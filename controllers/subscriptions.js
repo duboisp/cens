@@ -714,9 +714,18 @@ getRedirectForRecents = async ( query, mustBeSubscribed ) => {
 sendEmailViaNotify = async ( email, templateId, personalisation, notifyKey ) => {
 	let confirmCode = personalisation.confirm_link || null;
 	
+	console.log( "sendEmailViaNotify" );
+	console.log( email );
+	console.log( templateId );
+	console.log( personalisation );
+	console.log( notifyKey );
+
+
 	if ( !notifyKey || !templateId || !email || !personalisation ) {
 		return true;
 	}
+
+	console.log( "sendEmailViaNotify - initiating" );
 
 	// There is 1 personalisation, the confirm links
 	// /subs/confirm/:subscode/:email
@@ -737,7 +746,7 @@ sendEmailViaNotify = async ( email, templateId, personalisation, notifyKey ) => 
 
 	}
 	
-	
+	console.log( "Bypassing subscode: " + ( !_bypassSubscode ) );
 	
 	!_bypassSubscode && notifyClient.sendEmail( templateId, email, 
 			{
@@ -847,7 +856,18 @@ sendEmailViaNotify = async ( email, templateId, personalisation, notifyKey ) => 
 			});
 		}
 
+	}).then( () => {
+
+		console.log( "sendEmailViaNotify - SENT" );
+
+	}).finally( () => {
+
+		console.log( "sendEmailViaNotify - Finalized" );
+
 	});
+
+
+	console.log( "sendEmailViaNotify - completed" );
 	
 }
 

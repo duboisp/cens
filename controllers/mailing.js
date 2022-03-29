@@ -172,7 +172,7 @@ async function mailingApprovers( mailingId ) {
 
 	if ( !tDetails || !tDetails.approvers ) {
 		console.log( "mailingSendToApproval-No approvals email for : " + mailingInfo.topicId );
-		throw new Error( "No approvals email for : " + mailingInfo.topicId );
+		return [];
 	}
 
 	return tDetails.approvers

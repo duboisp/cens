@@ -95,6 +95,10 @@ exports.v_mailingEdit = async ( req, res, next ) => {
 		}
 		
 		let mApprovers = await mailing.mailingApprovers( mailingid );
+		if ( !mApprovers.length ) {
+			btnControler.noApprovers = 1;
+		}
+
 		//forEach()
 		// Parse the body
 		jsBody = { jsBody: mailingData.body.replace( /\r/g, "").replace( /\n/g, "\\n" ) };

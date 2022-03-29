@@ -73,6 +73,7 @@
 		{{#body}}
 			<h3>Workflow</h3>
 		<ul>
+			{{^noApprovers}}
 			<li >Select an approver: (<a href="0/approval">send to everyone</a>)
 				<ul>
 				{{#mApprovers}}
@@ -83,6 +84,7 @@
 				{{/mApprovers}}
 				</ul>
 			</li>
+			{{/noApprovers}}
 			<!-- transform the following button into link 
 			<li><a href="approval">Send email for approval</a></li> -->
 			<li><a href="approved">Approve the email</a></li>
